@@ -1,0 +1,18 @@
+extends ../share/layout
+
+block styleSection
+  link(rel="stylesheet", type="text/css", href= pageHelper.setStyle('user.about'))
+
+block content
+  div#content
+    div.content-bg
+      img(src="../../../img/about-bg1.jpg")
+    div.content
+      p TAS<sup><i class="web-font">®</i></sup>人才测评系统触屏版是适用于手机端的测评管理后台，用户在触屏版上可以实现大部分PC版的功能，如：开通测评账号、生成二维码实现扫码测评、查看测评结果、推送测评报告给相关人员。
+      p TAS<sup><i class="web-font">®</i></sup>人才测评系统触屏版可以让用户更加高效便捷的管理测评。
+      p 目前触屏版可以实现对心理测评的管理，360产品的管理与操作需登录PC版进行。
+      //p 倍智TAS<sup>®</sup>人才测评系统触屏版仅限于操作招聘类型的产品--校园招聘与社会招聘。其他产品请登陆电脑版系统操作。
+
+
+block scriptSection
+  script(type="text/javascript", src= pageHelper.setScript('user.about'))

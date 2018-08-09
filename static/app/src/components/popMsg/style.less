@@ -1,0 +1,57 @@
+@import "~c-ui/less/config/main";
+@import "~c-ui/less/mix/main";
+@import "~c-ui/less/lib/xmixins";
+//common less
+@import "../../commonStyle/common";
+.pjt-popMsg {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    z-index: 1000;
+    width: 18rem;
+    height: 8rem;
+    margin-left: -9rem;
+    margin-top: -6rem;
+    //.box(row);
+    //justify-content: center;
+    //align-items: center;
+    //flex-wrap: wrap;
+    background: #fff;
+    border-radius: 5px;
+    display: none;
+    &.active {
+        display: block;
+    }
+    .popMsg-content {
+        //flex: 1 1 100%;
+        //.box(row);
+        //justify-content: center;
+        //align-items: center;
+        text-align: center;
+        line-height: 80px;
+        height: 5rem;
+    }
+    .popMsg-btns {
+        //flex: 1 1 100%;
+        //.box(row);
+        //justify-content: center;
+        //align-items: center;
+        height: 3rem;
+        .btn {
+            //flex: 1 1 50%;
+            //text-align: center;
+            display: inline-block;
+            text-align: center;
+            width: 50%;
+            height: 3rem;
+            line-height: 3rem;
+            font-size: 1rem;
+            color: @c-standard-a;
+            border-top: 1px #eee solid;
+            &.confirm {
+                border-right: 1px #eee solid;
+                box-sizing: border-box;
+            }
+        }
+    }
+}

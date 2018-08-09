@@ -1,0 +1,166 @@
+@import "~c-ui/less/config/main";
+@import "~c-ui/less/mix/main";
+@import "~c-ui/less/lib/xmixins";
+//common less
+@import "../../commonStyle/common";
+body {
+    overflow-x: hidden;
+}
+
+.pjt-sidebar {
+    height: 100%;
+    width: 75%;
+    position: absolute;
+    //left: -75%;
+    top: 0;
+    z-index: 1000;
+    display: block;
+    background: #fff;
+    .sidebar-head {
+        height: 6rem;
+        padding: .8rem 0;
+        color: #fff;
+        background-color: @c-standard-a;
+        .sidebar-head-logo {
+            display: inline-block;
+            position: relative;
+            top: 1rem;
+            border: 2px solid #86c8e1;
+            // border-radius: 50%;
+            width: 3.6rem;
+            height: 3.6rem;
+            margin: 0 .5rem;
+            overflow: hidden;
+            img {
+                // border-radius: 50%;
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .sidebar-head-title {
+            display: inline-block;
+            position: relative;
+            top: 0rem;
+            font-size: 1rem;
+            margin: 0 .5rem;
+            .sub {
+                font-size: .6rem;
+            }
+        }
+    }
+    .sidebar-list {
+        ul {
+            // padding: 0.5rem;
+            list-style: none;
+            li {
+                //height: 3rem;
+                line-height: 3rem;
+                overflow: hidden;
+                &:active{
+                    background:#f5f5f5;
+                }
+                a {
+                    padding: 0.5rem;
+                    display: block;
+                    transition: background .2s;
+                    >div {
+                        display: inline-block;
+                        &.sidebar-list-logo {
+                            text-align: center;
+                            &.about{
+                                i{
+                                    border-radius: 0;
+                                    background:#fff;
+                                    color:#69c0ff;
+                                    padding:0;
+                                    font-size: 26px;
+                                    vertical-align: middle;
+                                }
+                            }
+                            &.quit{
+                                i{
+                                    border-radius: 0;
+                                    background:#fff;
+                                    color:#89919c;
+                                    padding:0;
+                                    font-size: 26px;
+                                    vertical-align: middle;
+                                }
+                            }
+                            i {
+                                color: #fff;
+                                background: #69c0ff;
+                                border-radius: 50%;
+                                width: 1rem;
+                                height: 1rem;
+                                line-height: 1rem;
+                                padding: 0.5rem;
+                            }
+                        }
+                        &.sidebar-list-title {
+                            margin: 0 0.8rem;
+                            height: 48px;
+                            line-height: 38px;
+                            sup{
+                                font-size: 0.5px;
+                                vertical-align: baseline;
+                                i{
+                                    font-size:16px;
+                                }
+                            }
+
+                        }
+                        &.sidebar-list-arrow {
+                            color: #ccc;
+                            float: right;
+                            margin-right: 0.5rem;
+                        }
+                    }
+                    &:focus,&:active{
+                        background: #E9EAED;
+                    }
+                    .web-font {
+                        font-family: "aliWebfont" !important;
+                        font-size: 8px;
+                        font-style: normal;
+                        -webkit-font-smoothing: antialiased;
+                        -webkit-text-stroke-width: 0.2px;
+                        -moz-osx-font-smoothing: grayscale;
+                    }
+                }
+            }
+        }
+    }
+    &.slideLeft {
+        left: 0;
+        transition: left 0.3s;
+    }
+    &.slideRight {
+        left: 25%;
+        transition: left 0.3s;
+    }
+    &.left {
+        left: -75%;
+    }
+    &.right {
+        left: 100%;
+    }
+    transition: left 0.3s;
+}
+
+@media(max-width:320px) {
+    .pjt-sidebar {
+        .sidebar-list {
+            ul {
+                padding:0;
+                li{
+                    a{
+                        >div.sidebar-list-title{
+                            margin:0 0 0 0.5rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

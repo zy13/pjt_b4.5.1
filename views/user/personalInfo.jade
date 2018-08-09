@@ -1,0 +1,11 @@
+extends ../share/layout
+
+
+block styleSection
+  link(rel="stylesheet", type="text/css", href= pageHelper.setStyle('user.personalInfo'))
+
+block content
+  div#content!= personalInfoHtml
+
+block scriptSection
+  script(type="text/javascript", src= pageHelper.setScript('user.personalInfo'))

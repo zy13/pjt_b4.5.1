@@ -1,0 +1,13 @@
+extends ../share/layout
+
+block styleSection
+  link(rel="stylesheet", type="text/css", href= pageHelper.setStyle('accountCenter.index'))
+
+block content
+  div#content
+    div#accountCenter!=accountCenterHtml
+  div#sidebar
+  div#totop
+
+block scriptSection
+  script(type="text/javascript", src= pageHelper.setScript('accountCenter.index'))

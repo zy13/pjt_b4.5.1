@@ -1,0 +1,53 @@
+extends ../share/layout
+
+block styleSection
+  link(rel="stylesheet", type="text/css", href= pageHelper.setStyle('reportCenter.index'))
+
+block content
+  div#content
+    div#searchbar
+    //-推送弹层
+    .pjt-modal
+      .pjt-brocken
+      //-推送选择
+      .pjt-push-panel
+        .pjt-push-about
+          .pjt-push-title 推送报告
+          .pjt-push-detail
+            p 已选中
+            span 8
+            p 份报告
+        .pjt-pust-way
+          ul
+            li
+              a(href="javascript:;")
+                .pjt-push-img
+                  img(data-src=pageHelper.setPageImgPath("/img/push-qq.png"))
+                .pjt-push-desc QQ好友
+            li
+              a(href="javascript:;")
+                .pjt-push-img
+                  img(data-src=pageHelper.setPageImgPath("/img/push-weixin.png"))
+                .pjt-push-desc 微信好友
+            li
+              a(href="javascript:;")
+                .pjt-push-img
+                  img(data-src=pageHelper.setPageImgPath("/img/push-email.png"))
+                .pjt-push-desc 发邮件给好友
+      //-发送邮件
+      .pjt-email-panel
+        .pjt-email-cancel
+          a(href="javascript:;").pjt-email-close.cpf-icon-thin-close
+        .pjt-email-con
+          p
+            em *
+            span 收件人
+          .pjt-email-input.cui-textBoxContainer(data-rule="required;email")
+            input(type="text" placeholder="请输入邮件地址")
+
+    div#report!= reportListHtml
+  div#sidebar
+  div#totop
+
+block scriptSection
+  script(type="text/javascript", src= pageHelper.setScript('reportCenter.index'))

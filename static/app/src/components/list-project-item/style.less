@@ -1,0 +1,149 @@
+@import "~c-ui/less/config/main";
+@import "~c-ui/less/mix/main";
+@import "~c-ui/less/lib/xmixins";
+//common less
+@import "../../commonStyle/common-list";
+
+
+
+.pjt-list-project-item {
+    .list-item();
+    .item-cap{
+        .list-item-cap();
+        line-height: 40px;
+        h3{
+            .elli();
+            font-size: @cc-font-size + 3;
+            padding: 0 0 0 25px;
+            position: relative;
+            font-weight: normal;
+            color: @c-standard-a;
+            span{
+                color: #FFF;
+                background: #fff;
+                color: #288add;
+                border: 1px solid #D7D7D7;
+                position: absolute;
+                left: 0px;
+                top: 42%;
+                height: 18px;
+                line-height: 20px;
+                width: 18px;
+                text-align: center;
+                margin: -6px 0 0;
+                font-weight: normal;
+                font-size: 8px;
+                transition: transform .2s;
+                font-weight: bold;
+            }
+        }
+        .btn-qrcode{
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            top: 0;
+            right: 0;
+            background: url('@{img}/qrcode-corner.png') top right no-repeat;
+            background-size: 30px;
+        }
+    }
+    .item-con{
+        display: none;
+        padding: 0 10px 5px;
+        .item-con-row{
+            border-bottom: @c-light-a 1px solid;
+            &:last-child{
+                border: 0;
+            }
+            .btns{
+                padding: 17.5px 0;
+                float: right;
+                width: 130px;
+                text-align: right;
+                a{
+                    display: inline-block;
+                    vertical-align: top;
+                    text-align: center;
+                    box-sizing: border-box;
+                    width: 60px;
+                    line-height: 25px;
+                    border: @c-light-a 1px solid;
+                    border-radius: 4px;
+                    font-size: @cc-font-size - 2;
+                    margin: 0 0 0 5px;
+                    color: #288add;
+                    &:active{
+                        transition: all .15s;
+                        border-color: @c-standard-a;
+                        background: @c-standard-a;
+                        color: @c-common-white;
+                    }
+                }
+            }
+            .info{
+                margin: 0 130px 0 0;
+                padding: 15px 0;
+                h4{
+                    .elli();
+                    color: #545454;
+                    font-size: 12px;
+                }
+                .progress{
+                    height: 13px;
+                    .progress-bar{
+                        display: inline-block;
+                        vertical-align: top;
+                        height: 5px;
+                        width: 60px;
+                        overflow: visible;
+                        background: @c-light-a;
+                        margin: 4px 0 0;
+                        border-radius: 2.5px;
+                        span{
+                            display: block;
+                            color: @c-light-a;;
+                            background: @c-standard-b;
+                            box-shadow: 0 0 0 2px @c-common-white;
+                            height: 5px;
+                            border-radius: 2.5px;
+                            width: 0%;
+                        }
+                    }
+                    .progress-pre{
+                        display: inline-block;
+                        vertical-align: top;
+                        line-height: 13px;
+                        font-size: 9px;
+                        padding: 0 4px;
+                        color: @c-gray-b;
+                        span{
+                            color: @c-standard-b;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &.list-project-show{
+        .item-cap{
+            background-color: #F8F8F8;
+        }
+        .item-cap h3 span{
+            background: #fff !important;
+            color: #288add;
+            transform: rotate(180deg);
+
+        }
+        .item-con{
+            display: block;
+        }
+    }
+    .progress-red{
+        .progress-bar span{
+            background: @c-standard-c !important;
+        }
+        .progress-pre span{
+            color: @c-standard-c !important;
+        }
+    }
+}

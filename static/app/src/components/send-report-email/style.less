@@ -1,0 +1,66 @@
+/**
+* @Author: Jet.Chan
+* @Date:   2016-09-05T10:10:30+08:00
+* @Email:  guanjie.chen@talebase.com
+* @Last modified by:   Jet.Chan
+* @Last modified time: 2016-09-06T14:48:02+08:00
+*/
+@import "~c-ui/less/config/main";
+@import "~c-ui/less/mix/main";
+@import "~c-ui/less/lib/xmixins"; //common less
+@import "../../commonStyle/common";
+.pjt-send-email {
+    padding: 12px 12px 20px;
+    .sendEmail-container {
+        padding: 10px;
+        background: #fff;
+        border-radius: 5px;
+        box-shadow: 0 2px 0 #e6e6e6;
+        overflow: hidden;
+        .cui-textBoxContainer {
+            .tip {
+                display: block;
+                color: #9e9e9e;
+                padding: 5px 0;
+                .requiredTip {
+                    color: #ff4d4e;
+                    padding: 0 3px;
+                }
+            };
+            input {
+                height: 45px;
+                width: 100%;
+                box-sizing: border-box;
+                .font-set(regularContent);
+            };
+            textarea {
+                width: 100%;
+                box-sizing: border-box;
+                height: 65px;
+                .font-set(regularContent);
+            };
+            .content {
+                //height: 140px;
+                padding: 5px;
+                border-radius: 3px;
+                background: #f0eff5;
+                color: #9c9c9c;
+                a {
+                    word-break: break-all;
+                }
+            };
+            button {
+                width: 100%;
+                box-sizing: border-box;
+                height: 45px;
+                .font-set(regularContent);
+            };
+            .disabled {
+                opacity: 0.6;
+            };
+            p {
+                word-break: break-all;
+            }
+        }
+    }
+}

@@ -1,0 +1,19 @@
+@import "~c-ui/less/config/main";
+@import "~c-ui/less/mix/main";
+@import "~c-ui/less/lib/xmixins";
+//common less
+@import "../../commonStyle/common";
+
+.pjt-block {
+    height: 100% ;
+    width: 100% ;
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 999;
+    display: none;
+    &.active {
+        display: block;
+    }
+}

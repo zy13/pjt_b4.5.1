@@ -1,0 +1,121 @@
+@import "~c-ui/less/config/main";
+@import "~c-ui/less/mix/main";
+@import "~c-ui/less/lib/xmixins";
+//common less
+@import "../../commonStyle/common";
+a {
+    outline: none;
+}
+
+.pjt-modal {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 998;
+    display: none;
+    .pjt-brocken {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 999;
+        background: rgba(0, 0, 0, 0.6);
+    }
+    //推送选择
+    .pjt-push-panel {
+        display: none;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        z-index: 1000;
+        background: @c-common-white;
+        .pjt-push-about {
+            padding: 5% 0;
+            color: #404040;
+            text-align: center;
+            border-bottom: 1px solid #ede3e6;
+            .pjt-push-title {
+                font-size: 14px;
+            }
+            .pjt-push-detail {
+                font-size: 12px;
+                span {
+                    .x-inline-block();
+                }
+                p {
+                    .x-inline-block()
+                }
+            }
+        }
+        .pjt-pust-way {
+            padding: 5%;
+            ul {
+                .flex-box();
+                li {
+                    .flex-item();
+                    a {
+                        width: 100%;
+                        display: block;
+                        text-align: center;
+                        .pjt-push-img {
+                            width: 45%;
+                            display: block;
+                            margin: 0 auto;
+                            img {
+                                display: block;
+                                width: 100%;
+                                height: 100%;
+                                .x-border-radius(50%);
+                            }
+                        }
+                        .pjt-push-desc {
+                            padding: 5% 0 8%;
+                            font-size: 12px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    //发送邮件
+    .pjt-email-panel {
+        position: absolute;
+        left: 5%;
+        top: 15%;
+        padding: 5%;
+        width: 80%;
+        z-index: 1000;
+        background: @c-common-white;
+        .x-border-radius(5px);
+        .pjt-email-cancel {
+            text-align: right;
+            a {
+                font-size: 24px;
+                color: #9d9d9d;
+            }
+        }
+        .pjt-email-con {
+            p {
+                em {
+                    color: @c-standard-c;
+                    margin-right: 10px;
+                }
+                span {
+                    color: #9d9d9d;
+                }
+            }
+            .pjt-email-input {
+                margin: 5% 0;
+                input {
+                	height: 44px;
+                    width: 100%;
+                    .x-box-sizing(border-box);
+                }
+            }
+        }
+    }
+}

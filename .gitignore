@@ -1,0 +1,13 @@
+node_modules
+
+npm-debug.log*
+
+user.json
+
+assets.json
+
+logs
+
+public/assets
+
+.idea

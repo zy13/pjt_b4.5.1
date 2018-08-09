@@ -1,0 +1,70 @@
+{
+    "apps": [{
+        "name": "pjt.B.Production",
+        "script": "./bin/www",
+        "exec_mode": "cluster",
+        "instances": 0,
+        "out_file": "/www/production/odeApp/log/pjt_b-app.log",
+        "error_file": "/www/production/nodeApp/log/pjt_b-err.log",
+        "env": {
+            "COMMON_VARIABLE": "true"
+        },
+        "env_test": {
+            "NODE_ENV": "test",
+            "PORT": "9403"
+        },
+        "env_pre": {
+            "NODE_ENV": "pre",
+            "PORT": "9403"
+        },
+        "env_production": {
+            "NODE_ENV": "production",
+            "PORT": "9405"
+        }
+    }],
+    "deploy": {
+        "test": {
+            "user": "root",
+            "host": "192.168.1.242",
+            "ref": "origin/develop",
+            "repo": "git@gitlab.cepin.com:pjtfe/pjt_b.git",
+            "path": "/home/local/pjt/pjt_b",
+            "post-deploy": "npm install ; npm update ; npm run build.env.test ;  pm2 startOrRestart ecosystem.json --env test",
+            "env": {
+                "NODE_ENV": "test",
+                "PORT": "9403"
+            }
+        },
+        "pre": {
+            "user": "root",
+            "host": [{
+                "host": "211.147.239.178",
+                "port": "55522"
+            }],
+            "ref": "origin/pre",
+            "repo": "git@gitlab.cepin.com:pjtfe/pjt_b.git",
+            "path": "/home/local/pjt/pjt_b",
+            "post-deploy": "npm install ; npm update ; npm run build.env.pre ;  pm2 startOrRestart ecosystem.json --env pre",
+            "env": {
+                "NODE_ENV": "pre",
+                "PORT": "9403"
+            }
+        },
+
+        "production": {
+            "user": "root",
+            "host": [{
+                "host": "47.97.197.140",
+                "port": "55522"
+            }],
+            "ref": "origin/pub",
+            "repo": "git@gitlab.cepin.com:pjtfe/pjt_b.git",
+            "path": "/home/local/pjt/production/pjt_b",
+            "post-deploy": "npm install ; npm update ; npm run build.env.production ;  pm2 startOrRestart production.json --env production",
+            "env": {
+                "NODE_ENV": "production",
+                "PORT": "9405"
+            }
+        }
+    }
+}

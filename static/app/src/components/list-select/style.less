@@ -1,0 +1,187 @@
+@import "~c-ui/less/config/main";
+@import "~c-ui/less/mix/main";
+@import "~c-ui/less/lib/xmixins";
+//common less
+@import "../../commonStyle/common";
+
+.dis {
+    display: none !important;
+}
+
+.pjt-select{
+    position: fixed;
+    top: 96px;
+    left: 0;
+    z-index: 1;
+    width: 94%;
+    height: 25px;
+    background: #fff;
+    border-bottom: 1px solid #DDDDE1;
+    padding: 2% 3% 4%;
+    font-family: microsoft yahei;
+    .x-clearfix();
+    .cui-checkboxContainer {
+        width: 50px;
+        margin-top: 4px;
+        span {
+            font-size: 12px;
+            margin-left: 4px;
+            line-height: 18px;
+        }
+    }
+    .cui-button {
+        padding: 0 5px;
+        height: 23px;
+        line-height: 23px;
+        margin: 0 5px;
+        float: right;
+        font-size: 12px;
+        .x-border-radius(3px);
+        &.preset-gray {
+            color: #89919c;
+            background: #e9eaed;
+            border-color: #e9eaed;
+        }
+        &.preset-green{
+            color: #fff;
+            background:#32b16c;
+            border-color: #32b16c;
+        }
+        &.preset-blue{
+            color: #fff;
+            background:#0078d7;
+            border-color: #0078d7;
+        }
+    }
+    .sendMes,
+    .promptMes {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        left: 0;
+        top: 0;
+        z-index: 2;
+        display: none;
+        &.active {
+            display: block;
+        }
+        .mask {
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            position: absolute;
+        }
+        .sendMesContain,
+        .promptMesContain {
+            width: 92%;
+            left: 4%;
+            top: 34%;
+            background: #fff;
+            position: absolute;
+            .x-border-radius(8px);
+            .tips {
+                padding: 8%;
+                p {
+                    color: #404040;
+                    font-size: 16px;
+                    text-align: left;
+                    margin-bottom: 1%;
+                }
+                >div{
+                    p{
+                        margin-bottom: 5%;
+                    }
+                }
+                >p {
+                    color: #9d9d9d;
+                    font-size: 12px;
+                    text-align: left;
+                    .x-clearfix();
+                    .cpf-icon-ic_warm{
+                        color:#9d9d9d;
+                        border:1px solid #9d9d9d;
+                        border-radius: 50%;
+                        font-size: 32px;
+                        float: left;
+                    }
+                    span{
+                        float: left;
+                        width:85%;
+                        padding:0 3%;
+                        box-sizing: border-box;
+                    }
+                    &:nth-child(2){
+                        border-top: 1px dashed #d3d3d3;
+                        padding-top: 15px;
+                    }
+                }
+            }
+            .btn {
+                border-top: 1px solid #ede3e6;
+                .x-clearfix();
+                a {
+                    width: 50%;
+                    height: 45px;
+                    line-height: 45px;
+                    text-align: center;
+                    font-size: 16px;
+                    color: #288ADD;
+                    float: left;
+                    &:first-child {
+                        width: 49.5%;
+                        border-right: 1px solid #e1e1e3;
+                    }
+                    &.can-style{
+                        width:100%;
+                    }
+                }
+
+            }
+        }
+    }
+    .exam-count{
+        position: relative;
+        top: -1px;
+    }
+}
+
+@media(max-width:320px) {
+    .pjt-select {
+        .sendMes,
+        .promptMes {
+            .sendMesContain,
+            .promptMesContain {
+                .tips {
+                    p {
+                        font-size: 14px;
+                    }
+                    >p{
+                        font-size:12px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media(max-width:300px) {
+    .pjt-select {
+        .cui-checkboxContainer {
+            width: 55px;
+            span {
+                font-size: 12px;
+            }
+        }
+        .cui-button {
+            span {
+                font-size: 12px;
+            }
+            &.preset-green {
+                padding: 0;
+            }
+        }
+    }
+}
+

@@ -1,0 +1,74 @@
+{
+    "development": {
+        "app": {
+            "http": {
+                "host": "m45.talebase.com", //http请求的host
+                "path": "",
+                "console": false,
+                "mock": false
+            }
+        },
+        "static": {
+            "srcPath": {
+                "pagePath": "./static/app/src/pages/"
+            },
+            "ajaxDomain": "http://localhost:3000",
+            "staticDomain": "http://localhost",
+            "staticPort": "9001"
+        }
+    },
+    "test": {
+        "app": {
+            "http": {
+                "host": "m45.talebase.net",
+                "path": "",
+                "console": false,
+                "mock": false
+            }
+        },
+        "static": {
+            "srcPath": {
+                "pagePath": "./static/app/src/pages/"
+            },
+            "ajaxDomain": "http://m45.talebase.net",
+            "staticDomain": "http://m45.talebase.net",
+            "staticPort": ""
+        }
+    },
+        "pre": {
+        "app": {
+            "http": {
+                "host": "prem.talebase.com",
+                "path": "",
+                "console": false,
+                "mock": false
+            }
+        },
+        "static": {
+            "srcPath": {
+                "pagePath": "./static/app/src/pages/"
+            },
+            "ajaxDomain": "http://prem.talebase.com",
+            "staticDomain": "http://prem.talebase.com",
+            "staticPort": ""
+        }
+    },
+    "production": {
+        "app": {
+            "http": {
+                "host": "m.talebase.com",
+                "path": "",
+                "console": false,
+                "mock": false
+            }
+        },
+        "static": {
+            "srcPath": {
+                "pagePath": "./static/app/src/pages/"
+            },
+            "ajaxDomain": "http://m.talebase.com",
+            "staticDomain": "http://m.talebase.com",
+            "staticPort": ""
+        }
+    }
+}
