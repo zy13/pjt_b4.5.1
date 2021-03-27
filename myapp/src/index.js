@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import context, {Provider} from './context'
 import './css/index1.css'
 
-
+// 单条留言组件
 class Message extends Component {
   static contextType = context
   render() {
@@ -19,6 +19,7 @@ class Message extends Component {
   }
 }
 
+// 留言列表组件
 class MessageList extends Component{
   static contextType = context
   render() {
@@ -32,6 +33,7 @@ class MessageList extends Component{
   }
 }
 
+// 添加留言组件
 class AddMessage extends Component{
   state = {
     title: '',
@@ -63,6 +65,9 @@ class AddMessage extends Component{
   }
 }
 
+// 父组件：包括 添加留言组件 和 留言列表组件
+// 通过<Provider>向子代组件传递数据
+// 定义添加留言方法和删除留言方法
 class App extends Component{
   state = {
     messageList: []
@@ -99,7 +104,6 @@ class App extends Component{
     </Provider>
   }
 }
-
 ReactDOM.render(
   <App />,
   document.querySelector('#root')
