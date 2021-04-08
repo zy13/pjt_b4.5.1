@@ -1,110 +1,185 @@
 import { Component } from "react";
 import ReactDOM from 'react-dom'
-import context, {Provider} from './context'
-import './css/index1.css'
+import './css/index.css'
 
-// 单条留言组件
-class Message extends Component {
-  static contextType = context
+class Todo extends Component{
+  constructor(props) {
+    super(props)
+    this.state = {
+      isEdit: false,
+      title2: props.todo.title
+    }
+  }
   render() {
-    const {removeMessage} = this.context
-    const {msg} = this.props
-    return <li>
-      <h3>{msg.title}</h3>
-      <p>{msg.content}</p>
-      <a onClick={()=>{
-        removeMessage(msg)
-      }}>删除</a>
+    const {id, title, done} = this.props.todo
+    const {isEdit, title2} = this.state
+    console.log(this.props);
+    return <li className={isEdit?'editing':''}>
+      <div className={`todo ${done?'done':''}`}>
+        <div className="display">
+          <input className="check" type="checkbox" checked={done} onChange={({target})=>{
+            this.props.changeDone(id, target.checked)
+          }}/>
+          <div className="todo-content" onDoubleClick={()=>{
+            this.setState({
+              isEdit: true
+            })
+          }}>{title}</div>
+          <span className="todo-destroy" onClick={()=>{
+            this.props.removeTodo(id)
+          }}></span>
+        </div>
+        <div className="edit">
+          <input className="todo-input" type="text" value={title2} onChange={({target})=>{
+            this.setState({
+              title2: target.value
+            })
+          }} onBlur={()=>{
+            if(title2.trim()) {
+              this.props.editTitle(id, title2)
+            } else {
+              this.setState({
+                title2: title
+              })
+            }
+            this.setState({
+              isEdit: false
+            })
+          }}/>
+        </div>
+      </div>
     </li>
   }
 }
 
-// 留言列表组件
-class MessageList extends Component{
-  static contextType = context
+class Todos extends Component{
   render() {
-    const {messageList} = this.context
-    console.log(messageList);
-    return <ul className="messageList">
-      {messageList.map((msg,index) => {
-        return <Message msg={msg} key={index}/>
-      })}
+    const {todos} = this.props
+    return <ul id="todo-list">
+      {
+        todos.map(todo => {
+          return <Todo {...this.props} todo={todo}  key={todo.id}/>
+        })
+      }
     </ul>
   }
 }
-
-// 添加留言组件
-class AddMessage extends Component{
-  state = {
-    title: '',
-    content: ''
-  }
-  static contextType = context
+class AddTodo extends Component{
   render() {
-    const {addMessage} = this.context
-    const {title, content} = this.state
-    return  <div className="addMessage">
-      <input value={title} onChange={({target})=>{
-        this.setState({
-          title: target.value
-        })
-      }} type="text" placeholder="请输入昵称" />
-      <textarea value={content} onChange={({target})=>{
-        this.setState({
-          content: target.value
-        })
-      }} placeholder="请输入留言"></textarea>
-      <button onClick={()=>{
-        addMessage(this.state)
-        this.setState({
-          title: '',
-          content: ''
-        })
-      }}>提交留言</button>
+    return <div id="create-todo">
+      <input id="new-todo" placeholder="What needs to be done?" type="text" onKeyDown={(e)=>{
+        const {target, keyCode} = e
+        const val = target.value
+        if(keyCode === 13) {
+          // 回车
+          if(val.trim()) {
+            this.props.addTodo(val)
+            target.value = ''
+          } else {
+            alert('请输入内容')
+            this.focus()
+          }          
+        }
+      }}/>
     </div>
   }
 }
 
-// 父组件：包括 添加留言组件 和 留言列表组件
-// 通过<Provider>向子代组件传递数据
-// 定义添加留言方法和删除留言方法
+class Stats extends Component{
+  render() {
+    const {todos} = this.props
+    const doneLen = todos.filter(item => item.done).length
+    const unDoneLen = todos.length - doneLen
+    console.log(doneLen, unDoneLen);
+    return <div id="todo-stats">
+      <span className="todo-count">
+        <span className="number">{unDoneLen}</span>
+        <span className="word">项待完成</span>
+      </span>
+      <span className="todo-clear">
+        <a>Clear <span>{doneLen}</span> 已完成事项</a>
+      </span>
+    </div>
+  }
+}
+
 class App extends Component{
   state = {
-    messageList: []
+    todos: [
+      {
+        id: 1,
+        title: '今晚上王者',
+        done: false
+      }
+    ]
   }
-  addMessage = (msg) => {
-    const {messageList} = this.state
+  addTodo = (title) => {
+    const {todos} = this.state
     this.setState({
-      messageList: [
-        ...messageList,
-        msg
+      todos: [
+        ...todos,
+        {
+          id: new Date(),
+          done: false,
+          title
+        }
       ]
     })
   }
-  removeMessage = (msg) => {
-    const {messageList} = this.state
+  removeTodo = (id) => {
+    const {todos} = this.state
     this.setState({
-      messageList: messageList.filter(msgItem => msgItem !== msg)
+      todos: todos.filter(item => item.id !== id)
+    })
+  }
+  changeDone = (id, done) => {
+    console.log(id, done);
+    const {todos} = this.state
+    this.setState({
+      todos: todos.map(item => {
+        if(item.id === id) {
+          return {
+            ...item,
+            done
+          }
+        } else {
+          return item
+        }
+      })
+    })
+  }
+  editTile = (id, title) =>{
+    const {todos} = this.state
+    this.setState({
+      todos: todos.map(item => {
+        if(item.id === id) {
+          return {
+            ...item,
+            title
+          }
+        } else {
+          return item
+        }
+      })
     })
   }
   render() {
-    const {messageList} = this.state
-    return <Provider value={
-      {
-        messageList: messageList,
-        addMessage: this.addMessage,
-        removeMessage: this.removeMessage
-      }
-    }>
-      <section className="wrap">
-        <h2 className="title">留言板</h2>
-        <AddMessage />
-        <MessageList />
-      </section>
-    </Provider>
+    const {todos} = this.state
+    return <div id="todoapp">
+      <div className="title">
+        <h1>todo</h1>
+      </div>
+      <div className="content">
+        <AddTodo addTodo={this.addTodo}/>
+        <Todos todos={todos} removeTodo={this.removeTodo} changeDone={this.changeDone} editTitle={this.editTile}/>
+        <Stats todos={todos}/>
+      </div>
+    </div>
   }
 }
+
 ReactDOM.render(
   <App />,
   document.querySelector('#root')
 )
+
